@@ -1,0 +1,678 @@
+/* Основные настройки */
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #3a1f0a;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --text-light: #e0e0e0;
+            --text-lighter: #ffffff;
+            --text-gray: #a5a5a5;
+            --sidebar-width: 280px;
+            --section-padding: 5rem 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier Prime', monospace;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            color: var(--text-lighter);
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Прелоадер */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            border: 5px solid var(--secondary-color);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Боковое меню */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background-color: var(--darker-bg);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            border-right: 1px solid rgba(255, 0, 0, 0.2);
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        .sidebar-logo {
+            margin-bottom: 3rem;
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .logo-img {
+            max-width: 80%;
+            height: auto;
+            transition: transform 0.3s ease;
+            filter: sepia(50%) brightness(80%);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            margin-left: 50px;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .sidebar-nav li::before {
+            content: ">";
+            position: absolute;
+            left: -25px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-nav a {
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .sidebar-nav i {
+            width: 25px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .discord-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background-color: #5865F2;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .discord-btn:hover {
+            background-color: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Основной контент */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+        }
+
+        /* Герой секция */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background: url('https://media.discordapp.net/attachments/1350161454518636616/1391129488380657674/ChatGPT_Image_5_._2025_._21_50_52.png?ex=686ac5cb&is=6869744b&hm=94005ad3246221bf08eea0a5751fd6f42db7b9d21c9bd5aa9bae599ae0b103b3&=&format=webp&quality=lossless&width=960&height=960') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            color: var(--primary-color);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .hero-btn:hover {
+            background-color: #6B0000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Секции */
+        .section {
+            padding: var(--section-padding);
+            background-color: var(--dark-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        .dark-section {
+            background-color: var(--darker-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header h2 i {
+            color: var(--primary-color);
+        }
+
+        .section-divider {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            margin: 0 auto;
+        }
+
+        .section-footer {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* О сервере */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            filter: sepia(30%) brightness(90%);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        /* Карточки */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card, .rule-card, .step-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(139, 0, 0, 0.2);
+        }
+
+        .feature-card:hover, .rule-card:hover, .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(139, 0, 0, 0.2);
+        }
+
+        .feature-card::before, .rule-card::before, .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+            z-index: 0;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-card h3, .rule-card h3, .step-card h3 {
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .feature-card p, .rule-card p, .step-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover::after {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Как присоединиться */
+        .join-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            text-align: center;
+        }
+
+        .step-number {
+            margin: 0 auto 15px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            background-color: #6B0000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(139, 0, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 0, 0, 0);
+            }
+        }
+
+        /* Футер */
+        .footer {
+            background-color: var(--darker-bg);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(139, 0, 0, 0.2);
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo-img {
+            max-width: 150px;
+            margin-bottom: 1rem;
+            filter: sepia(50%) brightness(80%);
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .footer-links a::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 20px;
+        }
+
+        .footer-social {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .footer-social a {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(139, 0, 0, 0.1);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-copyright p:first-child {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Эффект печатной машинки */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .sidebar-logo {
+                margin-bottom: 0;
+            }
+            
+            .sidebar-nav ul {
+                display: flex;
+                gap: 1.5rem;
+                margin-left: 0;
+            }
+            
+            .sidebar-nav li::before {
+                display: none;
+            }
+            
+            .sidebar-footer {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .sidebar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .sidebar-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-social {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+        }
