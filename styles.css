@@ -307,7 +307,7 @@
         }
 
         .about-image img {
-            width: 100%;
+            width: 150%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             filter: sepia(30%) brightness(90%);
